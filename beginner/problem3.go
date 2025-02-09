@@ -1,22 +1,30 @@
-/*
-With a given integral number n, write a program to generate a map that contains (i, i*i) such that is an integral number between 1 and n (both included), and then the program should print the map with representation of the value
-*/
-
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
+var bigString interface {
+	ReadString(string)
+	PrintString(string)
+}
+
+func ReadString(input string) {
+	
+}
 func main() {
-	var num int
-
-	_, err := fmt.Scanln(&num)
+	var input string
+	_, err := fmt.Scanln(&input)
 	if err != nil {
 		fmt.Printf("Error occurred while reading input: %v\n", err)
 	}
-	squareMap := make(map[int]int)
-
-	for i := 1; i <= num; i++ {
-		squareMap[i] = i * i
+	numbers := strings.Split(input, ",")
+	var num = make([]int, len(numbers))
+	for index, v := range numbers {
+		s := strings.Trim(v, " ")
+		num[index], _ = strconv.Atoi(s)
 	}
-	fmt.Println(" the map is: ", squareMap)
+	fmt.Println(num)
 }
